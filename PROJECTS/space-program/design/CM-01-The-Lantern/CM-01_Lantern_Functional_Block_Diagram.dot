@@ -1,0 +1,33 @@
+digraph Lantern {
+  graph [label="CM-01  |  THE LANTERN\nPRELIMINARY FUNCTIONAL BLOCK DIAGRAM  •  REV 0.1  •  25 NOV 2026", labelloc=t, fontsize=25, fontname="DejaVu Sans", fontcolor="#153451", bgcolor="#f7fbff", pad="0.35", nodesep="0.65", ranksep="1.05", splines=polyline, outputorder=edgesfirst];
+  node [shape=box, style="rounded,filled", fillcolor="#e4f0fb", color="#4778a3", penwidth=1.6, fontname="DejaVu Sans", fontcolor="#173a58", fontsize=15, margin="0.20,0.13"];
+  edge [arrowsize=0.8, penwidth=2, color="#4476a8", fontname="DejaVu Sans", fontcolor="#38506b", fontsize=11];
+  flight [label="FLIGHT DECK\nPilot controls · Displays · Alerts", fillcolor="#d5e8ff"];
+  avionics [label="AVIONICS & COMPUTING\nNavigation · Sensors · Control logic"];
+  comms [label="COMMUNICATIONS\nCrew · Ground · Vehicle links"];
+  power [label="ELECTRICAL POWER\nSource interface · Distribution", fillcolor="#fff1d5", color="#b58b3c"];
+  eclss [label="LIFE SUPPORT (ECLSS)\nAir · CO₂ removal · Water · Thermal", fillcolor="#d9f0e7", color="#458875"];
+  habitat [label="PRESSURIZED CREW HABITAT\n15-person mission requirement\nSeating · Berths · Stowage", fillcolor="#ecedf9", color="#6f76a3"];
+  airlock [label="AFT AIRLOCK / EVA ACCESS\nPressure boundary · Hatch · Suit route", fillcolor="#ecedf9", color="#6f76a3"];
+  vehicle [label="EXTERNAL SPACECRAFT SYSTEMS\nPropulsion · Other modules · Ground interfaces", fillcolor="#f3f5f7", color="#858d98"];
+  environment [label="EXTERNAL ENVIRONMENT\nVacuum / lunar operations", fillcolor="#f3f5f7", color="#858d98"];
+  {rank=same; avionics; flight; comms}
+  {rank=same; power; eclss}
+  {rank=same; vehicle; habitat; environment}
+  avionics -> flight [label="navigation / status data", color="#3976ad"];
+  flight -> avionics [label="commands", color="#3976ad"];
+  flight -> comms [label="voice / mission data", color="#3976ad", dir=both];
+  power -> avionics [label="electrical supply", color="#bf832c", fontcolor="#966421"];
+  power -> eclss [label="electrical supply", color="#bf832c", fontcolor="#966421"];
+  power -> flight [label="electrical supply", color="#bf832c", fontcolor="#966421"];
+  eclss -> habitat [label="air · water · thermal control", color="#28876a", fontcolor="#227057"];
+  eclss -> flight [label="telemetry / cautions", color="#3976ad"];
+  habitat -> airlock [label="crew access / pressure transition", color="#805da4", fontcolor="#73508f", dir=both];
+  vehicle -> avionics [label="vehicle telemetry / command", color="#3976ad", dir=both];
+  vehicle -> power [label="source connection (TBD)", color="#bf832c", fontcolor="#966421"];
+  vehicle -> habitat [label="structural / docking interfaces (TBD)", style=dashed, color="#7b8793"];
+  airlock -> environment [label="EVA hatch / egress", color="#805da4", fontcolor="#73508f", dir=both];
+  legend [shape=note, label="INTERFACE LEGEND\nBLUE  = control / data\nAMBER = electrical power\nGREEN = life-support services\nPURPLE = crew / hatch access\nDASHED = unresolved interface\n\nNot to scale. Arrows show proposed functional relationships,\nnot approved physical routing or verified redundancy.", fontsize=11, fillcolor="#ffffff", color="#a3b7c8"];
+  {rank=sink; legend}
+  environment -> legend [style=invis];
+}
