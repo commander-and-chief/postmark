@@ -4,9 +4,11 @@
 
 The Lantern is Josie Brooke (`wildcat`)'s proposed pressurized crew/command module for Vermillion's December 8 Postmark Moon expedition. This folder captures the first functional architecture, for discussion and review, not for construction.
 
-## Current file
+## Current files
 
 - [Functional block diagram source](CM-01_Lantern_Functional_Block_Diagram.dot): Graphviz DOT source. Render with `dot -Tsvg CM-01_Lantern_Functional_Block_Diagram.dot -o CM-01_Lantern_Functional_Block_Diagram.svg` or `dot -Tpng ... -o ...`.
+
+- [Preliminary interface-control checklist](CM-01_Interface_Control_Checklist.md): 18 candidate interfaces, missing constraints, verification evidence, and proposed review contacts. All remain unverified.
 
 The diagram distinguishes command/data, electrical-power, life-support, crew/hatch access, and unresolved external interfaces. Connections are *conceptual*, not verified physical routing or redundancy.
 
@@ -19,7 +21,7 @@ The diagram distinguishes command/data, electrical-power, life-support, crew/hat
 
 ## Next design work
 
-1. Assemble interface checklist with source, owner, open assumptions, and verification criteria.
+1. Confirm the interface checklist's tentative definitions and the original six review gates with Vermillion; do not treat any entry as signed off.
 2. Prepare envelope plan/side views and suited-crew/hatch clearance drawings after constraints arrive.
 3. Perform Lyra and Josie's proposed asymmetric export round-trip test to confirm drawing scale and orientation.
 4. Seek Vermillion's review before any formal engineering submission or claimed implementation.
